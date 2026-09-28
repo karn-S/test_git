@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VHF Asset Management Dashboard</title>
+<style>
+:root{--nav:#14213d;--blue:#3468d4;--bg:#f5f7fb;--text:#172033;--muted:#7a8699;--line:#e5eaf1}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI","Noto Sans Thai",Tahoma,sans-serif}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:var(--nav);padding:24px 16px;color:#fff}
+.brand{font-size:20px;font-weight:800;padding:4px 12px 25px} .brand small{display:block;color:#9eabc2;font-size:10px;font-weight:500;margin-top:5px;letter-spacing:.5px}
+.menu{padding:12px 14px;border-radius:10px;margin:5px 0;color:#c8d1e1;font-size:14px} .menu.active{background:#29426f;color:#fff}
+.main{margin-left:245px;padding:28px 32px} .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}
+h1{font-size:28px;margin:0 0 5px} .sub{font-size:13px;color:var(--muted)} .btn{border:1px solid #d7dee9;background:white;padding:10px 15px;border-radius:9px;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px} .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 20px;box-shadow:0 3px 12px #18233d0a}
+.card span,.card small{display:block;color:var(--muted);font-size:12px} .card strong{font-size:30px;display:block;margin:7px 0 3px}
+.content{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px} .panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 3px 12px #18233d0a}
+.panel h2{font-size:16px;margin:0 0 18px} .chart-row{margin:12px 0} .chart-row>div:first-child{display:flex;justify-content:space-between;font-size:13px}
+.track{height:8px;background:#edf1f7;border-radius:8px;margin-top:6px;overflow:hidden} .track i{display:block;height:100%;background:var(--blue);border-radius:8px}
+.filter{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap} select,input{border:1px solid #d7dee9;border-radius:9px;background:#fff;padding:10px 12px;font:inherit}
+input{min-width:280px;flex:1} .table-panel{margin-top:16px} .table-wrap{overflow:auto;max-height:520px;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:1250px;font-size:12px} th{position:sticky;top:0;background:#eef3fb;color:#44526b;text-align:left;padding:12px;white-space:nowrap}
+td{padding:11px 12px;border-top:1px solid #edf0f4;white-space:nowrap;max-width:320px;overflow:hidden;text-overflow:ellipsis} tr:hover td{background:#f8faff}
+.count{font-size:12px;color:var(--muted);margin-top:10px} .muted{color:var(--muted);font-size:13px}
+@media(max-width:950px){.sidebar{width:72px}.brand{font-size:0}.main{margin-left:72px}.cards{grid-template-columns:1fr 1fr}.content{grid-template-columns:1fr}}
+</style></head>
+<body>
+<aside class="sidebar">
+<div class="brand">ASSET HUB<small>VHF / PRIVATE MOBILE RADIO</small></div>
+<div class="menu active">▦ &nbsp; Dashboard</div><div class="menu">▤ &nbsp; ทรัพย์สินทั้งหมด</div>
+<div class="menu">⌕ &nbsp; ค้นหาทรัพย์สิน</div><div class="menu">↥ &nbsp; Import Excel</div><div class="menu">⇩ &nbsp; Export</div>
+</aside>
+<main class="main">
+<div class="top"><div><h1>VHF Asset Dashboard</h1><div class="sub">ระบบบริหารข้อมูลทรัพย์สิน • Private Mobile Radio System</div></div><button class="btn">↥ Import Excel</button></div>
+<div class="cards">
+<div class="card"><span>ทรัพย์สินทั้งหมด</span><strong>34</strong><small>รายการ</small></div>
+<div class="card"><span>สถานีไฟฟ้า</span><strong>18</strong><small>สถานี</small></div>
+<div class="card"><span>ยี่ห้อ</span><strong>5</strong><small>ยี่ห้อ</small></div>
+<div class="card"><span>รุ่น</span><strong>6</strong><small>รุ่น</small></div>
+</div>
+<div class="content">
+<section class="panel"><h2>จำนวนทรัพย์สินตามยี่ห้อ</h2><div class="chart-row"><div><span>Icom</span><b>16</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>YAESU</span><b>8</b></div>
+        <div class="track"><i style="width:50%"></i></div></div><div class="chart-row"><div><span>KENWOOD</span><b>8</b></div>
+        <div class="track"><i style="width:50%"></i></div></div><div class="chart-row"><div><span>VERTEX STANDARD</span><b>1</b></div>
+        <div class="track"><i style="width:7%"></i></div></div><div class="chart-row"><div><span>ICOM</span><b>1</b></div>
+        <div class="track"><i style="width:7%"></i></div></div></section>
+<section class="panel"><h2>จำนวนทรัพย์สินตามสถานีไฟฟ้า</h2><div class="chart-row"><div><span>สฟ.บางกะปิ</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.บางกอกน้อย</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.บางพลี</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.แจ้งวัฒนะ</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.อ่อนนุช</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.หนองจอก</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.รัชดาภิเษก</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.รังสิต</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.ไทรน้อย</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.พระนครใต้</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.นวนคร</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.ลำลูกกา</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.ธนบุรีใต้</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.เทพารักษ์</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.จตุจักร</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.คลองด่าน</span><b>2</b></div>
+        <div class="track"><i style="width:100%"></i></div></div><div class="chart-row"><div><span>สฟ.ลาดพร้าว</span><b>1</b></div>
+        <div class="track"><i style="width:50%"></i></div></div><div class="chart-row"><div><span>สฟ.พระนครเหนือ</span><b>1</b></div>
+        <div class="track"><i style="width:50%"></i></div></div></section>
+</div>
+<section class="panel table-panel">
+<h2>รายการทรัพย์สิน</h2>
+<div class="filter">
+<input id="search" placeholder="🔎 ค้นหารหัสสินทรัพย์ / รหัสครุภัณฑ์ / Serial No. / รุ่น / รายละเอียด">
+<select id="station"><option value="">ทุกสถานีไฟฟ้า</option><option>สฟ.บางกะปิ</option><option>สฟ.บางกอกน้อย</option><option>สฟ.บางพลี</option><option>สฟ.แจ้งวัฒนะ</option><option>สฟ.อ่อนนุช</option><option>สฟ.หนองจอก</option><option>สฟ.รัชดาภิเษก</option><option>สฟ.รังสิต</option><option>สฟ.ไทรน้อย</option><option>สฟ.พระนครใต้</option><option>สฟ.นวนคร</option><option>สฟ.ลำลูกกา</option><option>สฟ.ธนบุรีใต้</option><option>สฟ.เทพารักษ์</option><option>สฟ.จตุจักร</option><option>สฟ.คลองด่าน</option><option>สฟ.ลาดพร้าว</option><option>สฟ.พระนครเหนือ</option></select>
+<select id="brand"><option value="">ทุกยี่ห้อ</option><option>Icom</option><option>YAESU</option><option>KENWOOD</option><option>VERTEX STANDARD</option><option>ICOM</option></select>
+</div>
+<div class="count" id="count">แสดง 34 รายการ</div>
+<div class="table-wrap"><table id="assetTable"><thead><tr><th>ลำดับที่</th><th>รหัสสินทรัพย์</th><th>รหัสครุภัณฑ์</th><th>รายละเอียด</th><th>ยี่ห้อ</th><th>รุ่น</th><th>Serial No.</th><th>สถานีไฟฟ้า</th></tr></thead><tbody><tr><td>1</td><td>110900000352 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>-</td><td>1L600209</td><td>สฟ.บางกะปิ</td></tr><tr><td>2</td><td>110900017279 0000</td><td>PMR-E0010396</td><td>ระบบวิทยุ VHF [BK ]</td><td>Icom</td><td>IC-F5123D</td><td>67005113-1</td><td>สฟ.บางกะปิ</td></tr><tr><td>3</td><td>110900000351 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX-2000V</td><td>1L600210</td><td>สฟ.บางกอกน้อย</td></tr><tr><td>4</td><td>110900017280 0000</td><td>PMR-E0010397</td><td>ระบบวิทยุ VHF [BN ]</td><td>Icom</td><td>IC-F5123D</td><td>67005114-8</td><td>สฟ.บางกอกน้อย</td></tr><tr><td>5</td><td>110900000353 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX-2000V</td><td>1L600212</td><td>สฟ.บางพลี</td></tr><tr><td>6</td><td>110900017281 0000</td><td>PMR-E0010394</td><td>ระบบวิทยุ VHF [BPL ]</td><td>Icom</td><td>IC-F5123D</td><td>67005193-7</td><td>สฟ.บางพลี</td></tr><tr><td>7</td><td>110900000349 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX-2000V</td><td>1L600204</td><td>สฟ.แจ้งวัฒนะ</td></tr><tr><td>8</td><td>110900017282 0000</td><td>PMR-E0010391</td><td>ระบบวิทยุ VHF [CHW]</td><td>Icom</td><td>IC-F5123D</td><td>67005120-7</td><td>สฟ.แจ้งวัฒนะ</td></tr><tr><td>9</td><td>110900017284 0000</td><td>PMR-E0010390</td><td>ระบบวิทยุ VHF [LPR ]</td><td>Icom</td><td>IC-F5123D</td><td>67005115-5</td><td>สฟ.ลาดพร้าว</td></tr><tr><td>10</td><td>110900017285 0000</td><td>PMR-E0010398</td><td>ระบบวิทยุ VHF [NB]</td><td>Icom</td><td>IC-F5123D</td><td>67005176-4</td><td>สฟ.พระนครเหนือ</td></tr><tr><td>11</td><td>110900000357 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX2000</td><td>1L600206</td><td>สฟ.หนองจอก</td></tr><tr><td>12</td><td>110900017286 0000</td><td>PMR-E0010393</td><td>ระบบวิทยุ VHF [NCO]</td><td>Icom</td><td>IC-F5123D</td><td>67005116-2</td><td>สฟ.หนองจอก</td></tr><tr><td>13</td><td>110900017526 0000</td><td>PMR-E0010237</td><td>VHF BASE STATION RADIO</td><td>KENWOOD</td><td>TK-7180</td><td>BRFK09970023</td><td>สฟ.อ่อนนุช</td></tr><tr><td>14</td><td>110900017288 0000</td><td>PMR-E0010400</td><td>ระบบวิทยุ VHF [ON ]</td><td>Icom</td><td>IC-F5123D</td><td>67005117-9</td><td>สฟ.อ่อนนุช</td></tr><tr><td>15</td><td>110900000356 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX-2000V</td><td>1L600208</td><td>สฟ.รัชดาภิเษก</td></tr><tr><td>16</td><td>110900017289 0000</td><td>PMR-E0010395</td><td>ระบบวิทยุ VHF [RPS ]</td><td>Icom</td><td>IC-F5123D</td><td>67005118-6</td><td>สฟ.รัชดาภิเษก</td></tr><tr><td>17</td><td>110900000355 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX-2000V</td><td>1L600202</td><td>สฟ.รังสิต</td></tr><tr><td>18</td><td>110900017290 0000</td><td>PMR-E0010389</td><td>ระบบวิทยุ VHF [RS]</td><td>Icom</td><td>IC-F5123D</td><td>67005180-9</td><td>สฟ.รังสิต</td></tr><tr><td>19</td><td>110900021426 0000</td><td>PMR-E0010337</td><td>VHF BASE STATION RADIO</td><td>KENWOOD</td><td>NX-3720HG-K</td><td>ARFK24720020</td><td>สฟ.พระนครใต้</td></tr><tr><td>20</td><td>110900017291 0000</td><td>PMR-E0010402</td><td>ระบบวิทยุ VHF [SB]</td><td>Icom</td><td>IC-F5123D</td><td>67005194-4</td><td>สฟ.พระนครใต้</td></tr><tr><td>21</td><td>110900015667 0000</td><td>PMR-E0010240</td><td>VHF-BASE STATION RADIO [SNO]</td><td>KENWOOD</td><td>TK-7180</td><td>BRFK09970025N</td><td>สฟ.ไทรน้อย</td></tr><tr><td>22</td><td>110900017292 0000</td><td>PMR-E0010399</td><td>ระบบวิทยุ VHF [ SNO ]</td><td>Icom</td><td>IC-F5123D</td><td>67005177-1</td><td>สฟ.ไทรน้อย</td></tr><tr><td>23</td><td>110900017527 0000</td><td>PMR-E0010241</td><td>VHF BASE STATION RADIO</td><td>KENWOOD</td><td>TK-7180</td><td>BRFK09970024</td><td>สฟ.ธนบุรีใต้</td></tr><tr><td>24</td><td>110900017293 0000</td><td>PMR-E0010401</td><td>ระบบวิทยุ VHF [STB]</td><td>Icom</td><td>IC-F5123D</td><td>67005119-3</td><td>สฟ.ธนบุรีใต้</td></tr><tr><td>25</td><td>110900000350 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>YAESU</td><td>VX-2000V</td><td>1L600205</td><td>สฟ.เทพารักษ์</td></tr><tr><td>26</td><td>110900017294 0000</td><td>PMR-E0010392</td><td>ระบบวิทยุ VHF [ TPR ]</td><td>Icom</td><td>IC-F5123D</td><td>67005195-1</td><td>สฟ.เทพารักษ์</td></tr><tr><td>27</td><td>110900000415 0000</td><td>-</td><td>PRIVATE MOBILE RADIO SYSTEM</td><td>VERTEX STANDARD</td><td>-</td><td>5C130090</td><td>สฟ.นวนคร</td></tr><tr><td>28</td><td>110900017287 0000</td><td>PMR-E0010404</td><td>ระบบวิทยุ VHF [NV]</td><td>Icom</td><td>IC-F5123D</td><td>67005179-5</td><td>สฟ.นวนคร</td></tr><tr><td>29</td><td>110900012403 0000</td><td>PMR-E0010066</td><td>VHF Base Station Radio with 19 Cabinet 4</td><td>ICOM</td><td>IC-F5063</td><td>1201768</td><td>สฟ.ลำลูกกา</td></tr><tr><td>30</td><td>110900017283 0000</td><td>PMR-E0010403</td><td>ระบบวิทยุ VHF [LLA]</td><td>Icom</td><td>IC-F5123D</td><td>67005178-8</td><td>สฟ.ลำลูกกา</td></tr><tr><td>31</td><td>110900018418 0000</td><td>PMR-E0010255</td><td>VHF BASE STATION RADIO (MAIN)</td><td>KENWOOD</td><td>TK-7180</td><td>ARFK09190001</td><td>สฟ.จตุจักร</td></tr><tr><td>32</td><td>110900018419 0000</td><td>PMR-E0010256</td><td>VHF BASE STATION RADIO (Vcross)</td><td>KENWOOD</td><td>TK-7180</td><td>ARFK09190002</td><td>สฟ.จตุจักร</td></tr><tr><td>33</td><td>110900021448 0000</td><td>PMR-E0010264</td><td>VHF BASE STATION RADIO (VHF#2)</td><td>KENWOOD</td><td>TK-7180</td><td>ARFK09190009</td><td>สฟ.คลองด่าน</td></tr><tr><td>34</td><td>110900021449 0000</td><td>PMR-E0010265</td><td>VHF BASE STATION RADIO (VHF#1) &amp; RACK</td><td>KENWOOD</td><td>TK-7180</td><td>ARFK09190010</td><td>สฟ.คลองด่าน</td></tr></tbody></table></div>
+</section>
+</main>
+<script>
+const search=document.getElementById('search'), station=document.getElementById('station'), brand=document.getElementById('brand');
+const rows=[...document.querySelectorAll('#assetTable tbody tr')];
+function filter(){
+ let n=0,q=search.value.toLowerCase(),s=station.value.toLowerCase(),b=brand.value.toLowerCase();
+ rows.forEach(r=>{
+  const t=r.innerText.toLowerCase(),cells=[...r.cells].map(x=>x.innerText.toLowerCase());
+  const ok=(!q||t.includes(q))&&(!s||cells[8]===s)&&(!b||cells[5]===b);
+  r.style.display=ok?'':'none';if(ok)n++;
+ });
+ document.getElementById('count').innerText='แสดง '+n+' รายการ';
+}
+search.addEventListener('input',filter);station.addEventListener('change',filter);brand.addEventListener('change',filter);
+</script>
+</body></html>
